@@ -388,6 +388,21 @@ if (! function_exists('class_basename')) {
     }
 }
 
+if (! function_exists('class_namespace')) {
+    /**
+     * Gets the namespace of a given object / class
+     * 
+     * @param string|object  $class
+     * @return string
+     */
+    function class_namespace($class)
+    {
+        $class = is_object($class) ? get_class($class) : $class;
+
+        return dirname(str_replace('\\', '/', $class));
+    }
+}
+
 if (! function_exists('class_uses_recursive')) {
     /**
      * Returns all traits used by a class, its subclasses and trait of their traits.
